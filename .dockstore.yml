@@ -72,7 +72,7 @@ workflows:
     - empty.json
  - name: Seqsend_File_Prep_WAPHL
    subclass: WDL
-   primaryDescriptorPath: /tasks/task_seqsend_file_prep.wdl
+   primaryDescriptorPath: /workflows/wf_seqsender_WAPHL.wdl
    testParameterFiles:
     - empty.json
     
