@@ -1,61 +1,42 @@
-task split_by_clade {
+version 1.0
+
+task seqsender_submit {
+
   input {
-    File biosample_metadata
-    String unique_name
-    String docker = "quay.io/broadinstitute/py3-bio:0.1.2"
-    Int threads = 6
+    File      fasta
+    File      config
+    File      metadata
+    String    name
   }
+
   command <<<
-    # date and version control
-    date | tee DATE
-    python3<<CODE
-
-    import pandas as pd
-
-    '''Takes biosample_metadata.csv as input and returns tsv file required for seqsender uploads'''
-    input = "~{biosample_metadata}"
-    output = "~{unique_name}_output.txt"
-
-
-    df =pd.read_csv(input, sep='\t', header=0)
-
-    seqs=df[df.columns[0]].tolist()
-    df = df.replace("-",0)
-
-    done_list=[]
-    seq_list =[]
-    for i in seqs:
-      snp_dist=df[i].tolist()
-      res = [idx for idx, val in enumerate(snp_dist) if int(val) <= cluster_dist]
-
-      ids=[]
-      for j in res:
-        val=df.iloc[j].loc[df.columns[0]]
-        ids.append(val)
-
-      if res not in done_list:
-        done_list.append(res)
-        seq_list.append(ids)
-
-    with open(output, 'w') as fp:
-        for li in seq_list:
-            for item in li:
-                fp.write("%s\t" % item)
-            fp.write("\n")
-        print('Done')
-
-    CODE
+ 
+    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata}
+    
+    
+    
+    
+   
+    
   >>>
+
   output {
-    String date = read_string("DATE")
-    File clade_list_file = "~{cluster_name}_output.txt"
-    Array[Array[String]] clade_list = read_tsv("~{cluster_name}_output.txt")
+    File    out1="output_files/~{name}/accessions.csv"
+    File    out2="output_files/~{name}/biosample_sra/~{name}_biosample_submission.xml"
+    File    out3="output_files/~{name}/genbank/submission.xml"
+    File    out4="output_files/~{name}/genbank/~{name}_authorset.sbt"
+    File    out5="output_files/~{name}/genbank/~{name}_ncbi.fsa"
+    File    out6="output_files/~{name}/genbank/~{name}_source.src"
+    
+    
   }
+
+  
+
   runtime {
-    docker: "quay.io/broadinstitute/py3-bio:0.1.2"
-    memory: "16 GB"
-    cpu: 4
-    disks: "local-disk 100 SSD"
-    preemptible: 0
-    maxRetries: 3
+    docker:       "kwaterman/seqsender:0.1_Beta"
+    memory:       "8 GB"
+    cpu:          2
+    disks:        "local-disk 100 SSD"
+    preemptible:  1
   }
