@@ -70,3 +70,10 @@ workflows:
    primaryDescriptorPath: /workflows/wf_core_gene_snp.wdl
    testParameterFiles:
     - empty.json
+ - name: Seqsend_File_Prep_WAPHL
+   subclass: WDL
+   primaryDescriptorPath: /tasks/task_seqsend_file_prep.wdl
+   testParameterFiles:
+    - empty.json
+    
+    
