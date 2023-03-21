@@ -1,6 +1,7 @@
 version 1.0
 
-import "../tasks/utilities/task_seqsender_submit.wdl" as seqsender
+import "../tasks/utilities/task_seqsender_submit.wdl" as seqsender_submit
+import "../tasks/utilities/task_seqsender_update.wdl" as seqsender_update
 
 workflow seqsender {
 
@@ -18,6 +19,11 @@ workflow seqsender {
       metadata=biosample_metadata,
       name=unique_name
   }
+  
+  call seqsender.seqsender_update {
+    input:
+      report= seqsender_submit.out2
+  }
 
   output {
     File    out1=seqsender_submit.out1  
@@ -30,7 +36,7 @@ workflow seqsender {
     
 
   }
-
+  
 
 
 }
