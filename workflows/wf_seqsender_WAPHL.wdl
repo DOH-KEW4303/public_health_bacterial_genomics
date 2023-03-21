@@ -1,21 +1,21 @@
 version 1.0
 
-import "../tasks/utilities/task_seqsend_file_prep.wdl" as seqsender
+import "../tasks/utilities/task_seqsender_submit.wdl" as seqsender
 
 workflow seqsender {
 
   input {
-    File      test_fasta
-    File      test_config
-    File      test_metadata
+    File      seq_fasta
+    File      default_config
+    File      biosample_metadata
     String    unique_name
   }
 
   call seqsender.seqsender_submit {
     input:
-      fasta=test_fasta,
-      config=test_config,
-      metadata=test_metadata,
+      fasta=seq_fasta,
+      config=default_config,
+      metadata=biosample_metadata,
       name=unique_name
   }
 
