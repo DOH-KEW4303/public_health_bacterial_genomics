@@ -7,16 +7,14 @@ task seqsender_submit {
     File      config
     File      metadata
     String    name
+    String    docker="kwaterman/seqsender:0.1_Beta"
+    
   }
 
   command <<<
  
     seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata}
     
-    
-    
-    
-   
     
   >>>
 
@@ -41,4 +39,30 @@ task seqsender_submit {
     preemptible:  1
   }
   
+  }
+  
+  task seqsender_update {
+
+  input {
+    File      report
+    String    docker="kwaterman/seqsender:0.1_Beta"
+  }
+
+  command <<<
+
+    seqsender.py update_submissions
+
+
+  >>>
+
+
+
+  runtime {
+    docker:       "~{docker}"
+    memory:       "8 GB"
+    cpu:          2
+    disks:        "local-disk 100 SSD"
+    preemptible:  1
+  }
+
   }
