@@ -1,7 +1,7 @@
 version 1.0
 
-import "../tasks/utilities/task_seqsender_submit.wdl" as seqsender_submit
-import "../tasks/utilities/task_seqsender_update.wdl" as seqsender_update
+import "../tasks/utilities/task_seqsender_submit.wdl" as seqsender
+
 
 workflow seqsender {
 
