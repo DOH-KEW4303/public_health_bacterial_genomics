@@ -3,7 +3,7 @@ version 1.0
 task seqsender_update {
 
   input {
-    File      seqsender_submit.out2
+    File      report
     String    docker="kwaterman/seqsender:0.1_Beta"
   }
 
