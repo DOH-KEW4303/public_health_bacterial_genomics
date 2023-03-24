@@ -13,7 +13,7 @@ task seqsender_submit {
 
   command <<<
  
-    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata}
+    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} --test
     
     
   >>>
