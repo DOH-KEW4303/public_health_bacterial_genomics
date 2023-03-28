@@ -22,7 +22,7 @@ workflow seqsender {
   
   call seqsender.seqsender_update {
     input:
-      report= seqsender_submit.out2
+      report= seqsender_submit.out3
   }
 
   output {
@@ -32,6 +32,7 @@ workflow seqsender {
     File    out4=seqsender_submit.out4
     File    out5=seqsender_submit.out5
     File    out6=seqsender_submit.out6
+    File    out7=seqsender_submit.out7
    
     
 
