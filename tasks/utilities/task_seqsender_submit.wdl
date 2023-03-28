@@ -22,10 +22,10 @@ task seqsender_submit {
     File    out1="output_files/~{name}/accessions.csv"
     File    out2="output_files/~{name}/biosample_sra/~{name}_biosample_submission.xml"
     File    out3="output_files/~{name}/biosample_sra/~{name}_biosample_report.xml"
-    File    out3="output_files/~{name}/genbank/submission.xml"
-    File    out4="output_files/~{name}/genbank/~{name}_authorset.sbt"
-    File    out5="output_files/~{name}/genbank/~{name}_ncbi.fsa"
-    File    out6="output_files/~{name}/genbank/~{name}_source.src"
+    File    out4="output_files/~{name}/genbank/submission.xml"
+    File    out5="output_files/~{name}/genbank/~{name}_authorset.sbt"
+    File    out6="output_files/~{name}/genbank/~{name}_ncbi.fsa"
+    File    out7="output_files/~{name}/genbank/~{name}_source.src"
     
     
   }
