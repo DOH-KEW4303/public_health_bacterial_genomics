@@ -15,7 +15,6 @@ task seqsender_submit {
  
     seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} 
     sleep 20m
-    tree output_files/
     seqsender.py update_submissions
     
   >>>
