@@ -20,10 +20,6 @@ workflow seqsender {
       name=unique_name
   }
   
-  call seqsender.seqsender_update {
-    input:
-      report= seqsender_submit.out3
-  }
 
   output {
     File    out1=seqsender_submit.out1  
