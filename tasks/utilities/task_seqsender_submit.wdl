@@ -14,7 +14,9 @@ task seqsender_submit {
   command <<<
  
     seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} 
-    touch /output_files/~{name}/biosample_sra/~{name}_biosample_report.xml
+    sleep 20m
+    tree output_files/
+    seqsender.py update_submissions
     
   >>>
 
@@ -40,30 +42,6 @@ task seqsender_submit {
     preemptible:  1
   }
   
-  }
   
-  task seqsender_update {
-
-  input {
-    File      report
-    String    docker="kwaterman/seqsender:0.1_Beta"
-  }
-
-  command <<<
-
-    seqsender.py update_submissions
-
-
-  >>>
-
-
-
-  runtime {
-    docker:       "~{docker}"
-    memory:       "8 GB"
-    cpu:          2
-    disks:        "local-disk 100 SSD"
-    preemptible:  1
-  }
 
   }
