@@ -13,7 +13,7 @@ task seqsender_submit {
 
   command <<<
  
-    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} --ovwerite
+    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} --overwrite
     sleep 20m
     seqsender.py update_submissions
     
