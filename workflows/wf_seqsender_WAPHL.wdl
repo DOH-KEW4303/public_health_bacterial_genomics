@@ -19,8 +19,8 @@ workflow seqsender {
       fasta=seq_fasta,
       config=default_config,
       metadata=biosample_metadata,
-      read1=fastq_1
-      read2=fastq_2
+      read1=fastq_1,
+      read2=fastq_2,
       name=unique_name
   }
   
