@@ -5,6 +5,8 @@ task seqsender_submit {
   input {
     File      fasta
     File      config
+    File      read1
+    File      read2
     File      metadata
     String    name
     String    docker="kwaterman/seqsender:0.1_Beta"
@@ -13,7 +15,7 @@ task seqsender_submit {
 
   command <<<
  
-    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} 
+    seqsender.py submit --unique_name ~{name} --config ~{config} --fasta ~{fasta} --metadata ~{metadata} --test
     sleep 20m
     seqsender.py update_submissions
     
