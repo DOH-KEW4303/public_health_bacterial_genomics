@@ -5,8 +5,6 @@ task seqsender_submit {
   input {
     File      fasta
     File      config
-    File      read1
-    File      read2
     File      metadata
     String    name
     String    docker="kwaterman/seqsender:0.1_Beta"
