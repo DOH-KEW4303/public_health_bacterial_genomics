@@ -8,8 +8,6 @@ workflow seqsender {
   input {
     File      seq_fasta
     File      default_config
-    File      fastq_1
-    File      fastq_2
     File      biosample_metadata
     String    unique_name
   }
@@ -19,8 +17,6 @@ workflow seqsender {
       fasta=seq_fasta,
       config=default_config,
       metadata=biosample_metadata,
-      read1=fastq_1,
-      read2=fastq_2,
       name=unique_name
   }
   
