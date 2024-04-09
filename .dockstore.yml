@@ -75,5 +75,10 @@ workflows:
    primaryDescriptorPath: /workflows/wf_seqsender_WAPHL.wdl
    testParameterFiles:
     - empty.json
+  name: Seqsender_UpdateSubmissions
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_seqsender_update.wdl
+   testParameterFiles:
+    - empty.json
     
     
