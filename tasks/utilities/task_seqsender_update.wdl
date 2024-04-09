@@ -1,9 +1,9 @@
 version 1.0
 
-task seqsender_update {
+task update_submissions {
 
   input {
-    File      report
+  
     String    docker="kwaterman/seqsender:0.1_Beta"
   }
 
